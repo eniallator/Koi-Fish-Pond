@@ -36,9 +36,7 @@ function run() {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   koi.update(dt);
-  ctx.fillStyle = "white";
   koi.draw(ctx);
-  ctx.fillStyle = "black";
 
   // koi.pos = new Vector(canvas.width / 2, canvas.height / 2);
   // koi.t += 0.05;

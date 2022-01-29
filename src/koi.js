@@ -4,6 +4,13 @@ class Koi {
   static #bodySectionSpacing = 5;
   static #halfHeadSeparation = 2.5;
   static #bodyOffset = 2;
+  static #colours = {
+    eyes: "black",
+    body: "#F2F3F4",
+    highlights: "#FFD021",
+    topMarkingsDark: "#E34427",
+    topMarkingsLight: "#F16323",
+  };
 
   #pos;
   #scale;
@@ -85,10 +92,12 @@ class Koi {
   }
 
   draw(ctx) {
+    const oldFillStyle = ctx.fillStyle;
     // Body goes from head to the tail
     const bodyCenters = this.#getBodyCenters();
     const bodyAngles = this.#getBodyAngles(bodyCenters);
     const bodyPoints = this.#getBodyPoints(bodyCenters, bodyAngles);
+    ctx.fillStyle = Koi.#colours.body;
     ctx.beginPath();
     ctx.moveTo(bodyPoints[0].right.x, bodyPoints[0].right.y);
     ctx.bezierCurveTo(
@@ -114,6 +123,7 @@ class Koi {
       bodyAngles[0] - Math.PI / 2,
       bodyAngles[0] + Math.PI / 2
     );
-    ctx.stroke();
+    ctx.fill();
+    ctx.fillStyle = oldFillStyle;
   }
 }
