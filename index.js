@@ -25,7 +25,7 @@ ctx.strokeStyle = "white";
 //   halfHeadSeparation: 25,
 // };
 
-const koi = new Koi(canvas.width / 2, canvas.height / 2, 20);
+const koi = new Koi(canvas.width / 2, canvas.height / 2, 30, 3);
 
 let lastRan = Date.now();
 

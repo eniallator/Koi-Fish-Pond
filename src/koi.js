@@ -8,20 +8,22 @@ class Koi {
   #pos;
   #scale;
   #direction;
+  #animationSpeed;
 
   #timeAlive;
 
-  constructor(x, y, scale) {
+  constructor(x, y, scale, animationSpeed = 1) {
     this.#pos = new Vector(x, y);
     this.#scale = scale;
     this.#timeAlive = 0;
+    this.#animationSpeed = animationSpeed;
   }
 
   update(dt) {
-    this.#timeAlive += dt;
+    this.#timeAlive += dt * this.#animationSpeed;
   }
 
-  #getBodySegmentPositions() {
+  #getBodyCenters() {
     return new Array(4)
       .fill()
       .map(
@@ -74,36 +76,36 @@ class Koi {
       left: this.#rotatePointOnCircumference(
         center,
         new Vector(
-          center.x - this.#scale * Koi.#halfHeadSeparation * Koi.#bodyRadii[i],
+          center.x + this.#scale * Koi.#halfHeadSeparation * Koi.#bodyRadii[i],
           center.y
         ),
-        bodyAngles[i] - (Math.PI * 3) / 2
+        bodyAngles[i] - Math.PI / 2
       ),
     }));
   }
 
   draw(ctx) {
     // Body goes from head to the tail
-    const bodyCenters = this.#getBodySegmentPositions();
+    const bodyCenters = this.#getBodyCenters();
     const bodyAngles = this.#getBodyAngles(bodyCenters);
-    const points = this.#getBodyPoints(bodyCenters, bodyAngles);
+    const bodyPoints = this.#getBodyPoints(bodyCenters, bodyAngles);
     ctx.beginPath();
-    ctx.moveTo(points[0].right.x, points[0].right.y);
+    ctx.moveTo(bodyPoints[0].right.x, bodyPoints[0].right.y);
     ctx.bezierCurveTo(
-      points[1].right.x,
-      points[1].right.y,
-      points[2].right.x,
-      points[2].right.y,
+      bodyPoints[1].right.x,
+      bodyPoints[1].right.y,
+      bodyPoints[2].right.x,
+      bodyPoints[2].right.y,
       bodyCenters[3].x,
       bodyCenters[3].y
     );
     ctx.bezierCurveTo(
-      points[2].left.x,
-      points[2].left.y,
-      points[1].left.x,
-      points[1].left.y,
-      points[0].left.x,
-      points[0].left.y
+      bodyPoints[2].left.x,
+      bodyPoints[2].left.y,
+      bodyPoints[1].left.x,
+      bodyPoints[1].left.y,
+      bodyPoints[0].left.x,
+      bodyPoints[0].left.y
     );
     ctx.arc(
       bodyCenters[0].x,
