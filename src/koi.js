@@ -14,13 +14,14 @@ class Koi {
 
   #pos;
   #scale;
-  #direction;
+  #angle;
   #animationSpeed;
 
   #timeAlive;
 
-  constructor(x, y, scale, animationSpeed = 1) {
-    this.#pos = new Vector(x, y);
+  constructor(initialPos, initialAngle, scale, animationSpeed = 1) {
+    this.#pos = initialPos;
+    this.#angle = initialAngle;
     this.#scale = scale;
     this.#timeAlive = 0;
     this.#animationSpeed = animationSpeed;
@@ -36,12 +37,17 @@ class Koi {
       .map(
         (_, i) =>
           new Vector(
-            this.#pos.x +
-              Math.sin(this.#timeAlive + (3 - i) * Koi.#bodySectionCurveDelay) *
-                this.#scale *
-                Koi.#bodyOffset,
-            this.#pos.y + i * this.#scale * Koi.#bodySectionSpacing
+            Math.sin(this.#timeAlive + (3 - i) * Koi.#bodySectionCurveDelay) *
+              this.#scale *
+              Koi.#bodyOffset,
+            i * this.#scale * Koi.#bodySectionSpacing
           )
+      )
+      .map((center) =>
+        new Vector(
+          Math.cos(this.#angle) * center.x - Math.sin(this.#angle) * center.y,
+          Math.sin(this.#angle) * center.x + Math.cos(this.#angle) * center.y
+        ).add(this.#pos)
       );
   }
 
