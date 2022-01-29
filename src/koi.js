@@ -20,58 +20,48 @@ class Koi {
     this.#timeAlive += dt;
   }
 
+  #getBodySegmentPositions() {
+    // Goes from head to the tail
+    return new Array(4)
+      .fill()
+      .map(
+        (_, i) =>
+          new Vector(
+            this.#pos.x +
+              Math.sin(this.#timeAlive + (3 - i) * Koi.#bodySectionCurveDelay) *
+                this.#scale *
+                Koi.#bodyOffset,
+            this.#pos.y + i * this.#scale * Koi.#bodySectionSpacing
+          )
+      );
+  }
+
   draw(ctx) {
+    const bodyPos = this.#getBodySegmentPositions();
     ctx.beginPath();
     ctx.moveTo(
-      this.#pos.x +
-        Math.sin(this.#timeAlive + 3 * Koi.#bodySectionCurveDelay) *
-          this.#scale *
-          Koi.#bodyOffset +
-        this.#scale * Koi.#halfHeadSeparation,
-      this.#pos.y
+      bodyPos[0].x + this.#scale * Koi.#halfHeadSeparation,
+      bodyPos[0].y
     );
     ctx.bezierCurveTo(
-      this.#pos.x +
-        Math.sin(this.#timeAlive + 2 * Koi.#bodySectionCurveDelay) *
-          this.#scale *
-          Koi.#bodyOffset +
-        this.#scale * Koi.#halfHeadSeparation * (3 / 4),
-      this.#pos.y + this.#scale * Koi.#bodySectionSpacing,
-      this.#pos.x +
-        Math.sin(this.#timeAlive + Koi.#bodySectionCurveDelay) *
-          this.#scale *
-          Koi.#bodyOffset +
-        this.#scale * Koi.#halfHeadSeparation * (1 / 2),
-      this.#pos.y + 2 * this.#scale * Koi.#bodySectionSpacing,
-      this.#pos.x + Math.sin(this.#timeAlive) * this.#scale * Koi.#bodyOffset,
-      this.#pos.y + 3 * this.#scale * Koi.#bodySectionSpacing
+      bodyPos[1].x + this.#scale * Koi.#halfHeadSeparation * (3 / 4),
+      bodyPos[1].y,
+      bodyPos[2].x + this.#scale * Koi.#halfHeadSeparation * (1 / 2),
+      bodyPos[2].y,
+      bodyPos[3].x,
+      bodyPos[3].y
     );
     ctx.bezierCurveTo(
-      this.#pos.x +
-        Math.sin(this.#timeAlive + Koi.#bodySectionCurveDelay) *
-          this.#scale *
-          Koi.#bodyOffset -
-        this.#scale * Koi.#halfHeadSeparation * (1 / 2),
-      this.#pos.y + 2 * this.#scale * Koi.#bodySectionSpacing,
-      this.#pos.x +
-        Math.sin(this.#timeAlive + 2 * Koi.#bodySectionCurveDelay) *
-          this.#scale *
-          Koi.#bodyOffset -
-        this.#scale * Koi.#halfHeadSeparation * (3 / 4),
-      this.#pos.y + this.#scale * Koi.#bodySectionSpacing,
-      this.#pos.x +
-        Math.sin(this.#timeAlive + 3 * Koi.#bodySectionCurveDelay) *
-          this.#scale *
-          Koi.#bodyOffset -
-        this.#scale * Koi.#halfHeadSeparation,
-      this.#pos.y
+      bodyPos[2].x - this.#scale * Koi.#halfHeadSeparation * (1 / 2),
+      bodyPos[2].y,
+      bodyPos[1].x - this.#scale * Koi.#halfHeadSeparation * (3 / 4),
+      bodyPos[1].y,
+      bodyPos[0].x - this.#scale * Koi.#halfHeadSeparation,
+      bodyPos[0].y
     );
     ctx.arc(
-      this.#pos.x +
-        Math.sin(this.#timeAlive + 3 * Koi.#bodySectionCurveDelay) *
-          this.#scale *
-          Koi.#bodyOffset,
-      this.#pos.y,
+      bodyPos[0].x,
+      bodyPos[0].y,
       Koi.#halfHeadSeparation * this.#scale,
       Math.PI,
       0
