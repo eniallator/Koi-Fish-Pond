@@ -14,7 +14,6 @@ window.onresize = (evt) => {
 };
 window.onresize();
 
-ctx.fillStyle = "#1176AE";
 ctx.strokeStyle = "white";
 
 const koi = new Koi(
@@ -30,6 +29,7 @@ function run() {
   const currTime = Date.now();
   const dt = (currTime - lastRan) / 1000;
   lastRan = currTime;
+  ctx.fillStyle = "#1176AE";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   koi.update(dt);
