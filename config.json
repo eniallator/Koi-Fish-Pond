@@ -11,6 +11,12 @@
         }
     },
     {
+        "id": "koi-colour",
+        "label": "Koi Colour",
+        "type": "color",
+        "default": "F2F3F4"
+    },
+    {
         "id": "num_koi",
         "label": "Number of Koi",
         "type": "number",

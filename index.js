@@ -63,7 +63,10 @@ function run() {
   requestAnimationFrame(run);
 }
 
-paramConfig.addListener((state) => (koi.scale = state.scale), ["scale"]);
+paramConfig.addListener(
+  (state) => (Koi.bodyColour = "#" + state["koi-colour"]),
+  ["koi-colour"]
+);
 
 function init() {
   paramConfig.addListener(

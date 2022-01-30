@@ -294,6 +294,10 @@ class Koi {
   set swimSpeed(swimSpeed) {
     this.#swimSpeed = swimSpeed;
   }
+
+  static set bodyColour(colour) {
+    Koi.#colours.body = colour;
+  }
 }
 
 Koi.getImages();
