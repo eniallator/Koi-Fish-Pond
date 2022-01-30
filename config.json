@@ -3,11 +3,98 @@
         "id": "scale",
         "label": "Scale",
         "type": "range",
-        "default": 30,
+        "default": 3,
         "attrs": {
             "min": 5,
             "max": 50,
             "step": 1
+        }
+    },
+    {
+        "id": "num_koi",
+        "label": "Number of Koi",
+        "type": "number",
+        "default": 30,
+        "attrs": {
+            "min": 1,
+            "max": 1000
+        }
+    },
+    {
+        "id": "other_koi_detection_radius",
+        "label": "Other Koi Detecton Radius",
+        "type": "range",
+        "default": 0.055,
+        "attrs": {
+            "min": 0.01,
+            "max": 0.5,
+            "step": 0.005
+        }
+    },
+    {
+        "id": "koi_wall_detection_radius",
+        "label": "Koi Wall Detecton Radius",
+        "type": "range",
+        "default": 0.05,
+        "attrs": {
+            "min": 0.01,
+            "max": 0.4,
+            "step": 0.01
+        }
+    },
+    {
+        "id": "koi_speed",
+        "label": "Koi Speed",
+        "type": "range",
+        "default": 0.0003,
+        "attrs": {
+            "min": 0.0001,
+            "max": 0.001,
+            "step": 0.00005
+        }
+    },
+    {
+        "id": "koi_separation",
+        "label": "Koi Separation Influence",
+        "type": "range",
+        "default": 0.05,
+        "attrs": {
+            "min": 0,
+            "max": 1,
+            "step": 0.05
+        }
+    },
+    {
+        "id": "koi_alignment",
+        "label": "Koi Alignment Influence",
+        "type": "range",
+        "default": 0.3,
+        "attrs": {
+            "min": 0,
+            "max": 1,
+            "step": 0.05
+        }
+    },
+    {
+        "id": "koi_cohesion",
+        "label": "Koi Cohesion Influence",
+        "type": "range",
+        "default": 0.6,
+        "attrs": {
+            "min": 0,
+            "max": 1,
+            "step": 0.05
+        }
+    },
+    {
+        "id": "koi_mouse_influence",
+        "label": "Koi Mouse Click Influence",
+        "type": "range",
+        "default": 0.5,
+        "attrs": {
+            "min": 0,
+            "max": 1,
+            "step": 0.05
         }
     }
 ]

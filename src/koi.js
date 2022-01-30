@@ -43,7 +43,7 @@ class Koi {
     this.#pos = initialPos;
     this.#angle = initialAngle;
     this.#scale = scale;
-    this.#timeAlive = 0;
+    this.#timeAlive = Math.random() * (Math.PI * 2);
     this.#swimSpeed = swimSpeed;
   }
 
@@ -260,6 +260,22 @@ class Koi {
     this.#drawBody(ctx, bodyCenters, bodyAngles, bodyPoints);
     this.#drawEyes(ctx, bodyCenters, bodyAngles);
 
+    // ctx.fillStyle = "lightgreen";
+    // for (let points of Object.values(bodyPoints)) {
+    //   ctx.beginPath();
+    //   ctx.arc(points.right.x, points.right.y, 10, 0, 2 * Math.PI);
+    //   ctx.fill();
+    //   ctx.beginPath();
+    //   ctx.arc(points.left.x, points.left.y, 10, 0, 2 * Math.PI);
+    //   ctx.fill();
+    // }
+    // ctx.fillStyle = "red";
+    // for (let center of Object.values(bodyCenters)) {
+    //   ctx.beginPath();
+    //   ctx.arc(center.x, center.y, 10, 0, 2 * Math.PI);
+    //   ctx.fill();
+    // }
+
     ctx.fillStyle = oldFillStyle;
   }
 
@@ -274,6 +290,11 @@ class Koi {
   set angle(angle) {
     this.#angle = angle;
   }
+
+  set swimSpeed(swimSpeed) {
+    this.#swimSpeed = swimSpeed;
+  }
 }
 
 Koi.getImages();
+TimeAnalysis.registerMethods(Koi, ["draw", "update"]);
