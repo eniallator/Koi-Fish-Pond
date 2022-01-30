@@ -3,10 +3,10 @@
         "id": "scale",
         "label": "Scale",
         "type": "range",
-        "default": 3,
+        "default": 5,
         "attrs": {
-            "min": 5,
-            "max": 50,
+            "min": 1,
+            "max": 20,
             "step": 1
         }
     },
