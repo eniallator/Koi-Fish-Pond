@@ -14,7 +14,7 @@ window.onresize = (evt) => {
 };
 window.onresize();
 
-ctx.fillStyle = "black";
+ctx.fillStyle = "#1176AE";
 ctx.strokeStyle = "white";
 
 // const koi = {
@@ -25,7 +25,12 @@ ctx.strokeStyle = "white";
 //   halfHeadSeparation: 25,
 // };
 
-const koi = new Koi(new Vector(canvas.width / 2, canvas.height / 2), 0, 30, 3);
+const koi = new Koi(
+  new Vector(canvas.width / 2 + 100, canvas.height / 2),
+  Math.PI / 2,
+  30,
+  3
+);
 
 let lastRan = Date.now();
 
