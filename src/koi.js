@@ -260,7 +260,26 @@ class Koi {
     this.#drawBody(ctx, bodyCenters, bodyAngles, bodyPoints);
     this.#drawEyes(ctx, bodyCenters, bodyAngles);
 
+    // ctx.fillStyle = "lightgreen";
+    // for (let points of Object.values(bodyPoints)) {
+    //   ctx.beginPath();
+    //   ctx.arc(points.right.x, points.right.y, 10, 0, 2 * Math.PI);
+    //   ctx.fill();
+    //   ctx.beginPath();
+    //   ctx.arc(points.left.x, points.left.y, 10, 0, 2 * Math.PI);
+    //   ctx.fill();
+    // }
+    // ctx.fillStyle = "red";
+    // for (let center of Object.values(bodyCenters)) {
+    //   ctx.beginPath();
+    //   ctx.arc(center.x, center.y, 10, 0, 2 * Math.PI);
+    //   ctx.fill();
+    // }
     ctx.fillStyle = oldFillStyle;
+  }
+
+  set scale(newScale) {
+    this.#scale = newScale;
   }
 }
 

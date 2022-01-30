@@ -17,14 +17,6 @@ window.onresize();
 ctx.fillStyle = "#1176AE";
 ctx.strokeStyle = "white";
 
-// const koi = {
-//   t: 0,
-//   delay: Math.PI / 2.5,
-//   bodyOffset: 20,
-//   scale: 50,
-//   halfHeadSeparation: 25,
-// };
-
 const koi = new Koi(
   new Vector(canvas.width / 2 + 100, canvas.height / 2),
   Math.PI / 2,
@@ -43,50 +35,9 @@ function run() {
   koi.update(dt);
   koi.draw(ctx);
 
-  // koi.pos = new Vector(canvas.width / 2, canvas.height / 2);
-  // koi.t += 0.05;
-  // ctx.beginPath();
-  // ctx.moveTo(
-  //   koi.pos.x +
-  //     Math.sin(koi.t + 3 * koi.delay) * koi.bodyOffset +
-  //     koi.halfHeadSeparation,
-  //   koi.pos.y
-  // );
-  // ctx.bezierCurveTo(
-  //   koi.pos.x +
-  //     Math.sin(koi.t + 2 * koi.delay) * koi.bodyOffset +
-  //     koi.halfHeadSeparation * (3 / 4),
-  //   koi.pos.y + koi.scale,
-  //   koi.pos.x +
-  //     Math.sin(koi.t + koi.delay) * koi.bodyOffset +
-  //     koi.halfHeadSeparation * (1 / 2),
-  //   koi.pos.y + 2 * koi.scale,
-  //   koi.pos.x + Math.sin(koi.t) * koi.bodyOffset,
-  //   koi.pos.y + 3 * koi.scale
-  // );
-  // ctx.stroke();
-  // ctx.beginPath();
-  // ctx.moveTo(
-  //   koi.pos.x +
-  //     Math.sin(koi.t + 3 * koi.delay) * koi.bodyOffset -
-  //     koi.halfHeadSeparation,
-  //   koi.pos.y
-  // );
-  // ctx.bezierCurveTo(
-  //   koi.pos.x +
-  //     Math.sin(koi.t + 2 * koi.delay) * koi.bodyOffset -
-  //     koi.halfHeadSeparation * (3 / 4),
-  //   koi.pos.y + koi.scale,
-  //   koi.pos.x +
-  //     Math.sin(koi.t + koi.delay) * koi.bodyOffset -
-  //     koi.halfHeadSeparation * (1 / 2),
-  //   koi.pos.y + 2 * koi.scale,
-  //   koi.pos.x + Math.sin(koi.t) * koi.bodyOffset,
-  //   koi.pos.y + 3 * koi.scale
-  // );
-  // ctx.stroke();
-
   requestAnimationFrame(run);
 }
+
+paramConfig.addListener((state) => (koi.scale = state.scale), ["scale"]);
 
 paramConfig.onLoad(run);
