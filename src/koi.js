@@ -278,8 +278,16 @@ class Koi {
     ctx.fillStyle = oldFillStyle;
   }
 
-  set scale(newScale) {
-    this.#scale = newScale;
+  set scale(scale) {
+    this.#scale = scale;
+  }
+
+  set pos(vec) {
+    this.#pos.setHead(vec);
+  }
+
+  set angle(angle) {
+    this.#angle = angle;
   }
 }
 
