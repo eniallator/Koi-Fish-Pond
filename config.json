@@ -46,7 +46,7 @@
         "id": "koi_speed",
         "label": "Koi Speed",
         "type": "range",
-        "default": 0.0003,
+        "default": 0.00015,
         "attrs": {
             "min": 0.0001,
             "max": 0.001,
