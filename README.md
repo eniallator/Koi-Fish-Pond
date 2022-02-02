@@ -1,3 +1,3 @@
-# Web-Animation-Template
+# Koi Fish Pond
 
-My template repository for creating web animations
+Animated fish using javascript that swim around using the boids algorithm
