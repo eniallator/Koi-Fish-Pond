@@ -91,16 +91,5 @@
             "max": 1,
             "step": 0.05
         }
-    },
-    {
-        "id": "koi_mouse_influence",
-        "label": "Koi Mouse Click Influence",
-        "type": "range",
-        "default": 0.5,
-        "attrs": {
-            "min": 0,
-            "max": 1,
-            "step": 0.05
-        }
     }
 ]
